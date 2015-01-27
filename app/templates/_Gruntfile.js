@@ -79,13 +79,14 @@ module.exports = function (grunt) {
           '<%%= yeoman.app %>/*.html',
           '{.tmp,<%%= yeoman.app %>}/styles/{,*/}*.css',
           '{.tmp,<%%= yeoman.app %>}/scripts/{,*/}*.js',
-          '<%%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%%= yeoman.app %>/fonts/icons/{,*/}*.{svg}'
         ]
       }
     },
     connect: {
       options: {
-        port: 9000,
+        port: 9080,
         // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost',
         livereload: 35729
@@ -101,7 +102,7 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          port: 9001,
+          port: 9081,
           base: [
             '.tmp',
             'test',
@@ -368,7 +369,8 @@ module.exports = function (grunt) {
     'concat',
     'uglify',
     'copy',
-    'rev',
+    // Uncomment if you really need this.
+    //'rev',
     'usemin'
   ]);
 
