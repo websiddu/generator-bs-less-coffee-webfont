@@ -65,7 +65,7 @@ module.exports = function (grunt) {
         tasks: ['less']
       },
       webfont: {
-        files: ['<%%= yeoman.app %>/fonts/{,*/}*.svg'],
+        files: ['<%%= yeoman.app %>/fonts/icons/{,*/}*.svg'],
         tasks: ['webfont:icons']
       },
       gruntfile: {

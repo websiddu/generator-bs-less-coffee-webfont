@@ -48,47 +48,41 @@ Generator.prototype.askFor = function askFor() {
   this.log(yosay('Superpower is with you when ' + chalk.red('Yeoman') + ' is with you!'));
 
   var prompts = [{
-    type: 'checkbox',
-    name: 'features',
-    message: 'What more would you like?',
-    choices: [{
-      name: 'Bootstrap Javascript files',
-      value: 'jsBootstrap',
-      checked: true
+      type: 'checkbox',
+      name: 'features',
+      message: 'What more would you like?',
+      choices: [{
+        name: 'Bootstrap Javascript files',
+        value: 'jsBootstrap',
+        checked: true
+      }, {
+        name: 'respond.js (mediaquery polyfill for ie6-8)',
+        value: 'respondjs',
+        checked: false
+      }]
     }, {
-      name: 'respond.js (mediaquery polyfill for ie6-8)',
-      value: 'respondjs',
-      checked: false
-    }]
-  },
-
-{
-    name: 'deployToGithubPages',
-    message: 'Do you want to deploy your project to Github Pages? This requires an empty Github repository.',
-    type: 'confirm',
-    "default": false
-  }, {
-    name: 'githubUsername',
-    message: 'What is your Github username?',
-    "default": 'username',
-    when: function(props) {
-      return props.deployToGithubPages === true;
+      name: 'deployToGithubPages',
+      message: 'Do you want to deploy your project to Github Pages? This requires an empty Github repository.',
+      type: 'confirm',
+      "default": false
+    }, {
+      name: 'githubUsername',
+      message: 'What is your Github username?',
+      "default": 'username',
+      when: function(props) {
+        return props.deployToGithubPages === true;
+      }
+    }, {
+      name: 'githubRepository',
+      message: 'What is the Github repository name?',
+      "default": 'awesome-project',
+      when: function(props) {
+        return props.deployToGithubPages === true;
+      }
     }
-  }, {
-    name: 'githubRepository',
-    message: 'What is the Github repository name?',
-    "default": 'awesome-project',
-    when: function(props) {
-      return props.deployToGithubPages === true;
-    }
-  }
-
   ];
-
   this.prompt(prompts, function(answers) {
     var features = answers.features;
-
-    console.log(answers)
 
     function hasFeature(feat) {
       return features && features.indexOf(feat) !== -1;
