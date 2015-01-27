@@ -380,9 +380,8 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.registerTask('deploy', [
-    'build',
-    'buildcontrol'
-  ]);
+  <% if (config.get('deployToGithubPages')) { %>
+    grunt.registerTask('deploy', 'Deploy to Github Pages', ['build', 'buildcontrol']);
+  <% } %>
 
 };

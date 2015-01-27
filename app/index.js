@@ -88,6 +88,8 @@ Generator.prototype.askFor = function askFor() {
   this.prompt(prompts, function(answers) {
     var features = answers.features;
 
+    console.log(answers)
+
     function hasFeature(feat) {
       return features && features.indexOf(feat) !== -1;
     }
@@ -95,9 +97,11 @@ Generator.prototype.askFor = function askFor() {
     this.jsBootstrap = hasFeature('jsBootstrap');
     this.fontawesome = hasFeature('fontawesome');
     this.respondjs = hasFeature('respondjs');
-    this.deployToGithubPages = hasFeature('deployToGithubPages');
-    this.githubRepository = hasFeature('githubRepository');
-    this.githubUsername = hasFeature('githubUsername');
+
+    this.config.set('deployToGithubPages', answers.deployToGithubPages);
+    this.config.set('githubRepository', answers.githubRepository);
+    this.config.set('githubUsername', answers.githubUsername);
+
     cb();
   }.bind(this));
 };
